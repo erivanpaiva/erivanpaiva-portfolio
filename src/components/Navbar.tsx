@@ -2,10 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { Zain } from "next/font/google";
+import { motion } from "framer-motion";
 
 const zain = Zain({
   subsets: ["latin"],
-  weight: ["800"], // extrabold
+  weight: ["800"],
 });
 
 const sections = ["home", "about", "projects", "contact"];
@@ -41,47 +42,62 @@ export default function Navbar() {
   };
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50">
-      <nav
+    <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50">
+      <motion.nav
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
         className={`
-  flex items-center justify-between
-  w-full px-6 md:px-12 py-5
-  backdrop-blur-2xl
-  transition-all duration-300
-  ${
-    scrolled
-      ? "bg-black/50 border-b border-white/10"
-      : "bg-black/30 border-b border-transparent"
-  }
-`}
+    flex items-center justify-between
+    gap-4 px-6 py-3
+    rounded-full
+
+    backdrop-blur-2xl
+    bg-white/5
+    border border-white/20
+
+    ${
+      scrolled
+        ? "shadow-[0_10px_40px_rgba(0,0,0,0.4)]"
+        : "shadow-[0_4px_20px_rgba(0,0,0,0.2)]"
+    }
+  `}
       >
         <h1
           onClick={() => scrollToSection("home")}
-          className={`${zain.className} text-[16px] tracking-[0.4em] text-white uppercase cursor-pointer hover:opacity-80 transition`}
+          className={`${zain.className} text-[13px] tracking-[0.35em] text-white uppercase cursor-pointer hover:opacity-80 transition`}
         >
           Erivan Paiva
         </h1>
-        <div className="flex items-center gap-6 text-white/60 tracking-wide">
+        <div className="h-5 w-px bg-white/20" />
+        <div className="flex items-center gap-2 text-white/60">
           {sections.map((section) => (
             <button
               key={section}
               onClick={() => scrollToSection(section)}
-              className={`relative uppercase text-[11px] px-2 py-1 transition-all duration-300 ${
-                active === section ? "text-white" : "hover:text-white"
-              }`}
+              className={`relative flex items-center justify-center
+          uppercase text-[11px]
+          px-3 py-2 leading-none rounded-full
+          transition-all duration-300
+          ${active === section ? "text-white" : "hover:text-white"}`}
             >
               {section.charAt(0).toUpperCase() + section.slice(1)}
-              <span
-                className={`absolute inset-0 -z-10 transition-all duration-300 ${
-                  active === section
-                    ? "bg-emerald-500/20 blur-md opacity-100"
-                    : "opacity-0 bg-emerald-500/20 blur-md"
-                }`}
-              />
+
+              {active === section && (
+                <motion.span
+                  layoutId="active-pill"
+                  className="absolute inset-0 -z-10 rounded-full bg-white/10"
+                  transition={{
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 25,
+                  }}
+                />
+              )}
             </button>
           ))}
         </div>
-      </nav>
+      </motion.nav>
     </div>
   );
 }
