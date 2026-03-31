@@ -20,6 +20,32 @@ const sora = Sora({
 });
 
 export default function Hero() {
+  const container = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.12,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const fadeUpBlur = {
+    hidden: {
+      opacity: 0,
+      y: 20,
+      filter: "blur(10px)",
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      filter: "blur(0px)",
+      transition: {
+        duration: 0.6,
+      },
+    },
+  };
+
   const roles = ["Engineer", "Developer", "Designer", "Creative"];
   const [currentRole, setCurrentRole] = useState(0);
   const [copied, setCopied] = useState(false);
@@ -38,158 +64,138 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-6 relative overflow-hidden">
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="w-full max-w-[1000px] mx-auto z-10 flex flex-col items-center text-center min-h-screen justify-center"
-      >
-        <motion.h1
-          initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className={`
-    ${dmSans.className}
-    text-[32px] md:text-[48px] lg:text-[60px]
-    leading-[1.1]
-    tracking-[-0.02em]
-    text-white
-    flex items-center gap-4
-  `}
-        >
-          <span
-            className="
-    flex items-center justify-center
-    w-12 h-12 md:w-15 md:h-15
-    rounded-2xl
-    bg-emerald-100/20
-    border border-emerald-100/10
-  "
-          >
-            <span className="text-xl md:text-3xl">👨🏻‍💻</span>
-          </span>
-
-          <span>
-            Hey, I’m <span className="font-semibold">Erivan Paiva</span>
-          </span>
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-sm md:text-base
-  text-neutral-400 tracking-wide mt-2"
-        >
-          Software Developer | Fortaleza, Brazil
-        </motion.p>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className={`
-    ${dmSans.className}
-    text-[22px] md:text-[32px] lg:text-[38px]
-    leading-[1.35]
-    tracking-[-0.01em]
-    text-[#e5e5e5]
-    max-w-[700px]
-    mt-6
-  `}
-        >
-          I create modern and engaging digital experiences as a{" "}
-          <span className="relative inline-flex justify-center min-w-[120px] sm:min-w-[140px] md:min-w-[175px]">
-            <AnimatePresence mode="wait">
-              <motion.span
-                key={roles[currentRole]}
-                initial={{ opacity: 0, y: 8, filter: "blur(6px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                exit={{ opacity: 0, y: -8, filter: "blur(6px)" }}
-                transition={{ duration: 0.35 }}
-                className="text-emerald-400 whitespace-nowrap"
-              >
-                {roles[currentRole]}
-              </motion.span>
-            </AnimatePresence>
-          </span>
-          , focusing <br />
-          on high-impact products.
-        </motion.p>
-
+    <section className="min-h-screen">
+      <div className="max-w-[1200px] mx-auto px-6 min-h-screen flex flex-col justify-end pb-10 md:pb-14">
         <motion.div
+          variants={container}
           initial="hidden"
           animate="visible"
-          variants={{
-            hidden: {},
-            visible: {
-              transition: {
-                staggerChildren: 0.08,
-                delayChildren: 0.6,
-              },
-            },
-          }}
-          className="flex gap-5 mt-7"
+          className="
+    flex flex-col items-start text-left
+  "
         >
-          {[FaLinkedin, FaGithub, FaBehance, FaMedium].map((Icon, i) => (
-            <motion.a
-              key={i}
-              href=""
-              target="_blank"
-              variants={{
-                hidden: { opacity: 0, y: 10 },
-                visible: { opacity: 1, y: 0 },
-              }}
-              className="w-10 h-10 flex items-center justify-center 
-              rounded-xl bg-white/[0.04] border border-white/10
-              hover:bg-white/[0.08] hover:-translate-y-1
-              transition-all duration-300"
-            >
-              <Icon size={16} className="text-white/70" />
-            </motion.a>
-          ))}
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="flex items-center justify-center gap-4 mt-10 w-full"
-        >
-          <button
-            className="group flex items-center gap-2 px-6 py-3 rounded-full 
-            bg-white text-black text-sm font-medium
-            shadow-[0_6px_30px_rgba(255,255,255,0.15)]
-            hover:shadow-[0_10px_50px_rgba(255,255,255,0.25)]
-            hover:scale-[1.04] active:scale-[0.97]
-            transition-all duration-300"
+          <motion.h1
+            variants={fadeUpBlur}
+            className={`
+    ${dmSans.className}
+    text-[32px] sm:text-[40px] md:text-[56px] lg:text-[72px]
+    leading-[1.02]
+    tracking-[-0.04em]
+    flex items-baseline gap-3 sm:gap-5
+  `}
           >
-            Let's Connect
-            <FiArrowRight
-              size={16}
-              className="transition-transform duration-300 group-hover:translate-x-1"
-            />
-          </button>
+            <span>
+              <span className="text-white/80 font-normal">Hey, I’m </span>
 
-          <button
-            onClick={handleCopy}
-            className={`flex items-center justify-center gap-2
-            px-4 py-2.5 rounded-full text-sm
-            min-w-[230px]
-            text-white/60 hover:text-white
-            transition-all duration-300
-            hover:scale-105 active:scale-95
-            ${copied ? "scale-105 text-white" : ""}
-          `}
-          >
-            <FiCopy size={14} />
-            <span className="transition-all duration-300">
-              {copied ? "Copied!" : "erivannpaiva@gmail.com"}
+              <span className="font-semibold text-[#6de881]">
+                Erivan Paiva 👨🏻‍💻
+              </span>
             </span>
-          </button>
+          </motion.h1>
+
+          <motion.p
+            variants={fadeUpBlur}
+            className="text-xs sm:text-sm md:text-base text-neutral-400 mt-4"
+          >
+            Software Developer • Fortaleza, Brazil
+          </motion.p>
+
+          <motion.p
+            variants={fadeUpBlur}
+            className={`
+    ${dmSans.className}
+    text-[18px] sm:text-[22px] md:text-[28px] lg:text-[42px]
+    leading-[1.25]
+    tracking-[-0.02em]
+    text-[#e5e5e5]
+    max-w-[300px] sm:max-w-[380px] md:max-w-[480px] lg:max-w-[700px]
+    mt-6
+  `}
+          >
+            I create modern and engaging digital experiences as a{" "}
+            <span className="inline-flex justify-center items-center w-[70px] sm:w-[88px] md:w-[110px] lg:w-[172px] mx-1">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={roles[currentRole]}
+                  initial={{ opacity: 0, y: 5, filter: "blur(8px)" }}
+                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  exit={{ opacity: 0, y: -5, filter: "blur(8px)" }}
+                  transition={{ duration: 0.4 }}
+                  className="text-[#6de881] whitespace-nowrap"
+                >
+                  {roles[currentRole]}
+                </motion.span>
+              </AnimatePresence>
+            </span>
+            , focusing on high-impact products.
+          </motion.p>
+
+          <motion.div className="flex gap-4 mt-8">
+            {[FaLinkedin, FaGithub, FaBehance, FaMedium].map((Icon, i) => (
+              <motion.a
+                key={i}
+                href=""
+                target="_blank"
+                variants={fadeUpBlur}
+                className="
+        w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center 
+        rounded-xl bg-white/[0.04] border border-white/10
+        hover:bg-white/[0.08]
+        hover:-translate-y-[2px]
+        hover:shadow-[0_0_20px_rgba(255,255,255,0.15)]
+        transition-all duration-300
+      "
+              >
+                <Icon size={16} className="text-white/70" />
+              </motion.a>
+            ))}
+          </motion.div>
+
+          <motion.div
+            variants={fadeUpBlur}
+            className="flex items-center gap-2 sm:gap-4 mt-8 sm:mt-10"
+          >
+            <button
+              className="
+group flex items-center gap-2
+px-4 py-2.5 sm:px-6 sm:py-3
+rounded-full 
+bg-white text-black
+text-xs sm:text-sm font-medium
+whitespace-nowrap
+hover:scale-[1.04] active:scale-[0.97]
+hover:shadow-[0_0_25px_rgba(255,255,255,0.25)]
+transition-all duration-300
+"
+            >
+              Let's Connect
+              <FiArrowRight
+                size={16}
+                className="transition-transform duration-300 group-hover:translate-x-1"
+              />
+            </button>
+
+            <button
+              onClick={handleCopy}
+              className={`
+  flex items-center gap-2
+  px-3 py-2 sm:px-4 sm:py-2.5
+  rounded-full
+  text-xs sm:text-sm
+  text-white/60 hover:text-white
+  transition-all duration-300
+  flex-1 min-w-0
+  ${copied ? "text-white" : ""}
+`}
+            >
+              <FiCopy size={14} />
+              <span className="break-all">
+                {copied ? "Copied!" : "erivannpaiva@gmail.com"}
+              </span>
+            </button>
+          </motion.div>
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }
