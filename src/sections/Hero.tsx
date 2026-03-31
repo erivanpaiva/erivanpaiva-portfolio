@@ -2,25 +2,21 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Instrument_Serif, Inter, Space_Grotesk } from "next/font/google";
+import { DM_Sans, Sora } from "next/font/google";
 import { FaGithub, FaLinkedin, FaBehance, FaMedium } from "react-icons/fa";
 import { FiCopy, FiArrowRight } from "react-icons/fi";
 
-const instrumentserif = Instrument_Serif({
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  weight: ["400"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
   style: ["normal", "italic"],
+  display: "swap",
 });
 
-const inter = Inter({
+const sora = Sora({
   subsets: ["latin"],
-  weight: ["700"],
-  style: ["normal", "italic"],
-});
-
-const spacegrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["700"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
+  style: ["normal"],
 });
 
 export default function Hero() {
@@ -42,54 +38,49 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-6 relative overflow-hidden bg-[#0b0b0b]">
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        <div
-          className="absolute bottom-[-150px] left-1/2 -translate-x-1/2 w-[1200px] h-[600px]
-        bg-gradient-to-t from-neutral-700/80 via-neutral-400/20 to-transparent blur-[140px]"
-        />
-      </div>
-
+    <section className="min-h-screen flex items-center justify-center px-6 relative overflow-hidden">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="w-full max-w-[1000px] mx-auto z-10 text-center flex flex-col items-center"
+        className="w-full max-w-[1000px] mx-auto z-10 flex flex-col items-center text-center min-h-screen justify-center"
       >
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="relative mb-3"
-        >
-          <img
-            src="/foto.jpg"
-            alt="Erivan Paiva"
-            className="w-24 h-24 md:w-28 md:h-28 rounded-full object-cover border border-white/10"
-          />
-          <div className="absolute inset-0 rounded-full bg-white/10 blur-xl -z-10 scale-110" />
-        </motion.div>
-
         <motion.h1
           initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className={`${inter.className}
-          text-[55px] md:text-[75px] lg:text-[95px]
-          leading-[1]
-          tracking-[-0.03em]
-          text-white uppercase whitespace-nowrap`}
+          className={`
+    ${dmSans.className}
+    text-[32px] md:text-[48px] lg:text-[60px]
+    leading-[1.1]
+    tracking-[-0.02em]
+    text-white
+    flex items-center gap-4
+  `}
         >
-          Erivan Paiva
+          <span
+            className="
+    flex items-center justify-center
+    w-12 h-12 md:w-15 md:h-15
+    rounded-2xl
+    bg-emerald-100/20
+    border border-emerald-100/10
+  "
+          >
+            <span className="text-xl md:text-3xl">👨🏻‍💻</span>
+          </span>
+
+          <span>
+            Hey, I’m <span className="font-semibold">Erivan Paiva</span>
+          </span>
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.35 }}
-          className={`${spacegrotesk.className}
-          text-sm md:text-base
-          text-neutral-400 tracking-wide`}
+          initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="text-sm md:text-base
+  text-neutral-400 tracking-wide mt-2"
         >
           Software Developer | Fortaleza, Brazil
         </motion.p>
@@ -97,18 +88,19 @@ export default function Hero() {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.45 }}
-          className={`${instrumentserif.className}
-          text-[20px] md:text-[35px]
-          leading-[1.4]
-          tracking-[-0.01em]
-          text-[#e5e5e5]
-          max-w-[600px]
-          mt-5`}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className={`
+    ${dmSans.className}
+    text-[22px] md:text-[32px] lg:text-[38px]
+    leading-[1.35]
+    tracking-[-0.01em]
+    text-[#e5e5e5]
+    max-w-[700px]
+    mt-6
+  `}
         >
-          I create modern and engaging digital experiences as
-          <br />a{" "}
-          <span className="relative inline-flex w-[120px] justify-center">
+          I create modern and engaging digital experiences as a{" "}
+          <span className="relative inline-flex justify-center min-w-[120px] sm:min-w-[140px] md:min-w-[175px]">
             <AnimatePresence mode="wait">
               <motion.span
                 key={roles[currentRole]}
@@ -116,13 +108,14 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 exit={{ opacity: 0, y: -8, filter: "blur(6px)" }}
                 transition={{ duration: 0.35 }}
-                className="text-neutral-400 whitespace-nowrap italic"
+                className="text-emerald-400 whitespace-nowrap"
               >
                 {roles[currentRole]}
               </motion.span>
             </AnimatePresence>
           </span>
-          , focusing on high-impact products.
+          , focusing <br />
+          on high-impact products.
         </motion.p>
 
         <motion.div
@@ -162,7 +155,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="flex items-center gap-4 mt-7"
+          className="flex items-center justify-center gap-4 mt-10 w-full"
         >
           <button
             className="group flex items-center gap-2 px-6 py-3 rounded-full 
@@ -181,8 +174,7 @@ export default function Hero() {
 
           <button
             onClick={handleCopy}
-            className={`
-            flex items-center justify-center gap-2
+            className={`flex items-center justify-center gap-2
             px-4 py-2.5 rounded-full text-sm
             min-w-[230px]
             text-white/60 hover:text-white
