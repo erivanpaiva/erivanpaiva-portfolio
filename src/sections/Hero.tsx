@@ -64,8 +64,8 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="min-h-screen">
-      <div className="max-w-[1200px] mx-auto px-6 min-h-screen flex flex-col justify-end pb-10 md:pb-14">
+    <section id="home" className="min-h-screen">
+      <div className="max-w-[1200px] mx-auto px-6 min-h-screen flex flex-col justify-end pb-18 md:pb-20">
         <motion.div
           variants={container}
           initial="hidden"
@@ -130,27 +130,6 @@ export default function Hero() {
             , focusing on high-impact products.
           </motion.p>
 
-          <motion.div className="flex gap-4 mt-8">
-            {[FaLinkedin, FaGithub, FaBehance, FaMedium].map((Icon, i) => (
-              <motion.a
-                key={i}
-                href=""
-                target="_blank"
-                variants={fadeUpBlur}
-                className="
-        w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center 
-        rounded-xl bg-white/[0.04] border border-white/10
-        hover:bg-white/[0.08]
-        hover:-translate-y-[2px]
-        hover:shadow-[0_0_20px_rgba(255,255,255,0.15)]
-        transition-all duration-300
-      "
-              >
-                <Icon size={16} className="text-white/70" />
-              </motion.a>
-            ))}
-          </motion.div>
-
           <motion.div
             variants={fadeUpBlur}
             className="flex items-center gap-2 sm:gap-4 mt-8 sm:mt-10"
@@ -193,6 +172,27 @@ transition-all duration-300
                 {copied ? "Copied!" : "erivannpaiva@gmail.com"}
               </span>
             </button>
+          </motion.div>
+
+          <motion.div className="flex gap-4 mt-8">
+            {[FaLinkedin, FaGithub, FaBehance, FaMedium].map((Icon, i) => (
+              <motion.a
+                key={i}
+                href=""
+                target="_blank"
+                variants={fadeUpBlur}
+                className="
+        w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center 
+        rounded-xl bg-white/[0.04] border border-white/10
+        hover:bg-white/[0.08]
+        hover:-translate-y-[2px]
+        hover:shadow-[0_0_20px_rgba(255,255,255,0.15)]
+        transition-all duration-300
+      "
+              >
+                <Icon size={16} className="text-white/70" />
+              </motion.a>
+            ))}
           </motion.div>
         </motion.div>
       </div>
