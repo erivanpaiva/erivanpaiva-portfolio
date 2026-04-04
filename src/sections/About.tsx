@@ -64,7 +64,7 @@ const skills = [
   { name: "HTML", icon: "/icons/html.svg", color: "#E34C26" },
   { name: "Java", icon: "/icons/java.svg", color: "#3A75B0" },
   { name: "JavaScript", icon: "/icons/javascript.svg", color: "#F7DF1E" },
-  { name: "Python", icon: "/icons/python.svg", color: "#1E425F" },
+  { name: "Python", icon: "/icons/python.svg", color: "#306896" },
   { name: "TypeScript", icon: "/icons/typescript.svg", color: "#3178C6" },
   { name: "Next.js", icon: "/icons/nextjs.svg", color: "#FFFFFF" },
   { name: "React", icon: "/icons/react.svg", color: "#61DAFB" },
@@ -74,13 +74,16 @@ const skills = [
   { name: "React Native", icon: "/icons/reactnative.svg", color: "#087EA4" },
   { name: "Figma", icon: "/icons/figma.svg", color: "#F24E1E" },
   { name: "Git", icon: "/icons/git.svg", color: "#DE4C36" },
-  { name: "Visual Studio", icon: "/icons/visualstudio.svg", color: "#C959F7" },
+  { name: "Visual Studio", icon: "/icons/visualstudio.svg", color: "#ac4bd2" },
   { name: "VS Code", icon: "/icons/vscode.svg", color: "#218BD3" },
 ];
 
 export default function About() {
   return (
-    <section id="about" className="px-6 pt-12 md:pt-16 pb-24 md:pb-32">
+    <section
+      id="about"
+      className="px-6 pt-8 sm:pt-12 md:pt-16 pb-20 sm:pb-24 md:pb-32"
+    >
       <div className="w-full max-w-[1150px] mx-auto flex flex-col gap-24">
         <motion.div
           initial="hidden"
@@ -106,14 +109,14 @@ export default function About() {
             />
           </motion.div>
 
-          <div className="max-w-[1000px] mx-auto w-full grid md:grid-cols-[1.3fr_0.7fr] gap-16 md:gap-20 items-center mt-6 md:mt-8">
+          <div className="max-w-[1000px] mx-auto w-full grid grid-cols-1 md:grid-cols-[1.3fr_0.7fr] gap-10 sm:gap-12 md:gap-20 items-center mt-2 sm:mt-6 md:mt-8">
             <motion.div
               variants={container}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false, amount: 0.3 }}
               className={`
-    ${dmSans.className} text-neutral-300 text-[16.8px] md:text-[18.8px] leading-[2] space-y-4`}
+    ${dmSans.className} text-neutral-300 text-[15px] sm:text-[17.8px] md:text-[18.8px] leading-[1.8] md:leading-[2] space-y-4`}
             >
               <motion.p variants={item}>
                 <span className="text-white font-semibold">
@@ -151,7 +154,7 @@ export default function About() {
               transition={{ duration: 0.6 }}
               className="flex justify-center md:justify-end"
             >
-              <div className="relative w-[300px] md:w-[360px] aspect-[3/4] transition-transform duration-500 ease-out hover:rotate-[1.5deg] hover:scale-[1.03]">
+              <div className="relative w-[240px] sm:w-[280px] md:w-[360px] aspect-[3/4] transition-transform duration-500 ease-out hover:rotate-[1.5deg] hover:scale-[1.03]">
                 <div className="absolute inset-0 bg-[#6de881]/10 blur-2xl rounded-2xl" />
                 <Image
                   src="/foto.jpg"
@@ -169,7 +172,7 @@ export default function About() {
             whileInView="visible"
             viewport={{ once: false, amount: 0.3 }}
             className={`
-    ${dmSans.className} max-w-[1000px] mx-auto w-full grid md:grid-cols-3 gap-6 mt-8 md:mt-10 uppercase`}
+    ${dmSans.className} max-w-[1000px] mx-auto w-full grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6 mt-8 md:mt-10 uppercase`}
           >
             {[
               {
@@ -194,9 +197,9 @@ export default function About() {
                 <motion.div
                   key={card.title}
                   variants={badgeItem}
-                  className="group p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl flex flex-col items-start gap-4 transition-all duration-300 hover:-translate-y-1 hover:border-[#6de881]/40 hover:bg-white/10"
+                  className="group p-4 sm:p-5 md:p-6 rounded-2xl bg-[#18201C] flex flex-col items-start gap-4 transition-all duration-300 hover:-translate-y-1 hover:bg-[#1E2A22]"
                 >
-                  <div className="w-12 h-12 rounded-full bg-[#6de881]/15 border border-[#6de881]/30 flex items-center justify-center text-[#6de881] text-lg">
+                  <div className="w-12 h-12 rounded-full bg-[#293D34] flex items-center justify-center text-[#BDF5C9] text-lg">
                     <Icon className="w-5 h-5" />
                   </div>
 
@@ -239,26 +242,28 @@ export default function About() {
 
           <motion.div
             variants={container}
-            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-[repeat(6,150px)] gap-5 max-w-[1100px] mx-auto justify-center mt-6 md:mt-8"
+            className="grid grid-cols-3 sm:grid-cols-6 md:grid-cols-6 lg:grid-cols-[repeat(6,150px)] gap-3 sm:gap-4 md:gap-5 max-w-[1100px] mx-auto justify-center mt-6 md:mt-8"
           >
             {skills.map((skill) => (
               <motion.div
                 variants={item}
                 key={skill.name}
-                className="group relative aspect-square w-full rounded-3xl bg-white/5 border border-white/10 flex flex-col items-center justify-center gap-3 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.03] "
+                className=" group relative aspect-square w-full min-h-[100px] sm:min-h-[100px] md:min-h-[100px] rounded-xl sm:rounded-2xl md:rounded-xl lg:rounded-3xl bg-[#18201C] flex flex-col items-center justify-center gap-2 sm:gap-3 md:gap-4 p-8 sm:p-8 md:p-8 transition-all duration-300 hover:-translate-y-1 hover:bg-[#1E2A22] hover:scale-[1.03] "
               >
                 <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 blur-xl"
-                  style={{ backgroundColor: `${skill.color}30` }}
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 rounded-[inherit] blur-xl"
+                  style={{
+                    background: `radial-gradient(circle at center, ${skill.color}40 0%, transparent 70%)`,
+                  }}
                 />
 
                 <img
                   src={skill.icon}
                   alt={skill.name}
-                  className="w-[48px] h-[48px] object-contain z-10 transition duration-300 group-hover:scale-110"
+                  className="w-[28px] h-[28px] sm:w-[34px] sm:h-[34px] md:w-[42px] md:h-[42px] lg:w-[48px] lg:h-[48px] object-contain z-10 transition duration-300 group-hover:scale-110"
                 />
 
-                <span className="text-[10px] text-zinc-300 text-center transition duration-300 group-hover:text-white z-10 uppercase">
+                <span className="text-[9px] sm:text-[9px]md:text-[10px] lg:text-[10px] text-zinc-300 text-center transition duration-300 group-hover:text-white z-10 uppercase">
                   {skill.name}
                 </span>
               </motion.div>

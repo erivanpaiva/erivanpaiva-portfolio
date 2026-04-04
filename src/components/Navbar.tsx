@@ -134,7 +134,7 @@ export default function Navbar() {
                 className="flex items-center justify-center
                 w-8 h-8 rounded-full
                 backdrop-blur-2xl
-                bg-white/8 border border-white/10
+                bg-white/6 border border-white/8
                 text-white/70 hover:text-white
                 hover:bg-white/12
                 transition-all duration-300"
@@ -146,7 +146,7 @@ export default function Navbar() {
                 onClick={() => setLang(lang === "EN" ? "PT" : "EN")}
                 className="flex items-center gap-2 h-8 px-2.5 rounded-full
                 backdrop-blur-2xl
-                bg-white/8 border border-white/10
+                bg-white/6 border border-white/8
                 text-[11px] text-white/70 hover:text-white
                 hover:bg-white/12
                 transition-all duration-300"
@@ -169,7 +169,7 @@ export default function Navbar() {
               className="md:hidden flex items-center justify-center
               w-8 h-8 rounded-full
               backdrop-blur-2xl
-              bg-white/8 border border-white/10
+              bg-white/6 border border-white/8
               text-white/70 hover:text-white
               transition"
             >
@@ -200,7 +200,7 @@ export default function Navbar() {
               className="flex items-center justify-center
               w-10 h-10 rounded-full
               backdrop-blur-2xl
-              bg-white/8 border border-white/10
+              bg-white/6 border border-white/8
               text-white/70 hover:text-white
               hover:bg-white/12
               transition-all duration-300"
@@ -212,7 +212,7 @@ export default function Navbar() {
               onClick={() => setLang(lang === "EN" ? "PT" : "EN")}
               className="flex items-center gap-2 px-4 h-10 rounded-full
               backdrop-blur-2xl
-              bg-white/8 border border-white/10
+              bg-white/6 border border-white/8
               text-sm text-white/70 hover:text-white
               hover:bg-white/12
               transition-all duration-300"
