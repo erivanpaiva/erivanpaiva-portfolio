@@ -65,31 +65,27 @@ export default function Hero() {
 
   return (
     <section id="home" className="min-h-screen">
-      <div className="max-w-[1200px] mx-auto px-6 min-h-screen flex flex-col justify-end pb-18 md:pb-20">
+      <div className="max-w-[1200px] mx-auto px-6 min-h-screen flex flex-col justify-end pb-12 md:pb-14">
         <motion.div
           variants={container}
           initial="hidden"
           animate="visible"
-          className="
-    flex flex-col items-start text-left
-  "
+          className="flex flex-col items-start text-left"
         >
           <motion.h1
             variants={fadeUpBlur}
-            className={`
-    ${dmSans.className}
-    text-[32px] sm:text-[40px] md:text-[56px] lg:text-[72px]
-    leading-[1.02]
-    tracking-[-0.04em]
-    flex items-baseline gap-3 sm:gap-5
-  `}
+            className={`${dmSans.className} text-[15.5px] sm:text-[22px] md:text-[28px] lg:text-[42px] leading-[1.70] tracking-[-0.02em] text-[#e5e5e5] mt-6 `}
           >
-            <span>
-              <span className="text-white/80 font-normal">Hey, I’m </span>
+            Hey, I’m
+          </motion.h1>
 
-              <span className="font-semibold text-[#6de881]">
-                Erivan Paiva 👨🏻‍💻
-              </span>
+          <motion.h1
+            variants={fadeUpBlur}
+            className={` ${dmSans.className} text-[43px] sm:text-[60px] md:text-[76px] lg:text-[115px] font-semibold text-[#6de881] leading-[0] tracking-[-0.04em] flex items-center flex-wrap gap-1 sm:gap-2 md:gap-3 `}
+          >
+            Erivan Paiva
+            <span className="text-[33px] sm:text-[50px] md:text-[66px] lg:text-[95px] xl:text-[95px] shrink-0 leading-none">
+              👨🏻‍💻
             </span>
           </motion.h1>
 
@@ -97,23 +93,15 @@ export default function Hero() {
             variants={fadeUpBlur}
             className="text-xs sm:text-sm md:text-base text-neutral-400 mt-4"
           >
-            Software Developer • Fortaleza, Brazil
+            Software Developer ✱ Fortaleza, Brazil
           </motion.p>
 
           <motion.p
             variants={fadeUpBlur}
-            className={`
-    ${dmSans.className}
-    text-[18px] sm:text-[22px] md:text-[28px] lg:text-[42px]
-    leading-[1.25]
-    tracking-[-0.02em]
-    text-[#e5e5e5]
-    max-w-[300px] sm:max-w-[380px] md:max-w-[480px] lg:max-w-[700px]
-    mt-6
-  `}
+            className={` ${dmSans.className} text-[15.5px] sm:text-[22px] md:text-[28px] lg:text-[42px] leading-[1.25] tracking-[-0.02em] text-[#e5e5e5] max-w-[260px] sm:max-w-[380px] md:max-w-[480px] lg:max-w-[700px] mt-5 `}
           >
             I create modern and engaging digital experiences as a{" "}
-            <span className="inline-flex justify-center items-center w-[70px] sm:w-[88px] md:w-[110px] lg:w-[172px] mx-1">
+            <span className="inline-flex justify-center items-center w-[58px] sm:w-[88px] md:w-[112px] lg:w-[172px] mx-1">
               <AnimatePresence mode="wait">
                 <motion.span
                   key={roles[currentRole]}
@@ -132,21 +120,9 @@ export default function Hero() {
 
           <motion.div
             variants={fadeUpBlur}
-            className="flex items-center gap-2 sm:gap-4 mt-8 sm:mt-10"
+            className="flex items-center gap-2 sm:gap-3 mt-6 sm:mt-8"
           >
-            <button
-              className="
-group flex items-center gap-2
-px-4 py-2.5 sm:px-6 sm:py-3
-rounded-full 
-bg-white text-black
-text-xs sm:text-sm font-medium
-whitespace-nowrap
-hover:scale-[1.04] active:scale-[0.97]
-hover:shadow-[0_0_25px_rgba(255,255,255,0.25)]
-transition-all duration-300
-"
-            >
+            <button className=" group flex items-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3 rounded-full bg-white text-black text-xs sm:text-sm font-medium whitespace-nowrap hover:scale-[1.04] active:scale-[0.97] hover:shadow-[0_0_25px_rgba(255,255,255,0.25)] transition-all duration-300 ">
               Let's Connect
               <FiArrowRight
                 size={16}
@@ -156,19 +132,10 @@ transition-all duration-300
 
             <button
               onClick={handleCopy}
-              className={`
-  flex items-center gap-2
-  px-3 py-2 sm:px-4 sm:py-2.5
-  rounded-full
-  text-xs sm:text-sm
-  text-white/60 hover:text-white
-  transition-all duration-300
-  flex-1 min-w-0
-  ${copied ? "text-white" : ""}
-`}
+              className={` flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-full text-xs sm:text-sm text-white/60 hover:text-white transition-all duration-300 flex-1 min-w-0 ${copied ? "text-white" : ""} `}
             >
               <FiCopy size={14} />
-              <span className="break-all">
+              <span className="truncate block max-w-[120px] sm:max-w-[180px] md:max-w-[240px]">
                 {copied ? "Copied!" : "erivannpaiva@gmail.com"}
               </span>
             </button>
@@ -181,14 +148,7 @@ transition-all duration-300
                 href=""
                 target="_blank"
                 variants={fadeUpBlur}
-                className="
-        w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center 
-        rounded-xl bg-white/[0.04] border border-white/10
-        hover:bg-white/[0.08]
-        hover:-translate-y-[2px]
-        hover:shadow-[0_0_20px_rgba(255,255,255,0.15)]
-        transition-all duration-300
-      "
+                className=" w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-xl bg-white/[0.04] border border-white/10 hover:bg-white/[0.08] hover:-translate-y-[2px] hover:shadow-[0_0_20px_rgba(255,255,255,0.15)] transition-all duration-300 "
               >
                 <Icon size={16} className="text-white/70" />
               </motion.a>
