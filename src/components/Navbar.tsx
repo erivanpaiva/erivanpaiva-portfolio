@@ -1,28 +1,20 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Zain } from "next/font/google";
 import { motion } from "framer-motion";
 import { FiSun, FiMenu, FiX } from "react-icons/fi";
 
-const zain = Zain({
-  subsets: ["latin"],
-  weight: ["800"],
-});
-
-const sections = ["home", "about", "projects", "contact"];
+const sections = ["home", "about", "projects", "blog", "contact"];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("home");
   const [menuOpen, setMenuOpen] = useState(false);
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState(() => {
+    if (typeof window === "undefined") return "dark";
+    return localStorage.getItem("theme") ?? "dark";
+  });
   const [lang, setLang] = useState<"EN" | "PT">("EN");
-
-  useEffect(() => {
-    const saved = localStorage.getItem("theme");
-    if (saved) setTheme(saved);
-  }, []);
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", theme === "dark");
@@ -76,6 +68,9 @@ export default function Navbar() {
   return (
     <>
       <motion.div
+        initial={false}
+        animate={{ opacity: scrolled ? 1 : 0 }}
+        transition={{ duration: 0.25, ease: "easeOut" }}
         className="fixed top-0 left-0 w-full h-[160px] z-40 pointer-events-none backdrop-blur-xl bg-black/20"
         style={{
           WebkitMaskImage:
@@ -95,10 +90,10 @@ export default function Navbar() {
           transition-all duration-300
         `}
       >
-        <div className="max-w-[1200px] mx-auto px-6 flex items-center justify-between">
+        <div className="max-w-[1300px] mx-auto px-6 flex items-center justify-between">
           <h1
             onClick={() => scrollToSection("home")}
-            className={`${zain.className}
+            className={`font-zain
               text-[13px] tracking-[0.5em]
               text-white/90 uppercase cursor-pointer
               hover:opacity-80 transition`}
@@ -106,13 +101,14 @@ export default function Navbar() {
             Erivan Paiva
           </h1>
 
-          <div className="flex items-center gap-4">
-            <nav className="hidden md:flex items-center gap-6 text-white/60">
+          <div className="flex items-center gap-5">
+            <nav className="font-space hidden md:flex items-center gap-8 text-white/60">
               {sections.map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
                   className={`
+                    font-space
                     uppercase text-[11px] tracking-wide
                     transition-all duration-300
                     hover:-translate-y-[2px]
@@ -144,7 +140,7 @@ export default function Navbar() {
 
               <button
                 onClick={() => setLang(lang === "EN" ? "PT" : "EN")}
-                className="flex items-center gap-2 h-8 px-2.5 rounded-full
+                className="font-space flex items-center gap-2 h-8 px-2.5 rounded-full
                 backdrop-blur-2xl
                 bg-white/6 border border-white/8
                 text-[11px] text-white/70 hover:text-white
@@ -180,7 +176,7 @@ export default function Navbar() {
       </motion.header>
 
       {menuOpen && (
-        <div className="fixed top-0 left-0 w-full h-screen z-[60] bg-black/80 backdrop-blur-xl flex flex-col items-center justify-center gap-10">
+        <div className="font-space fixed top-0 left-0 w-full h-screen z-[60] bg-black/80 backdrop-blur-xl flex flex-col items-center justify-center gap-10">
           {sections.map((section) => (
             <button
               key={section}
@@ -188,7 +184,7 @@ export default function Navbar() {
                 scrollToSection(section);
                 setMenuOpen(false);
               }}
-              className="text-white text-lg uppercase tracking-[0.3em]"
+              className="font-space text-white text-lg uppercase tracking-[0.3em]"
             >
               {section}
             </button>
@@ -210,7 +206,7 @@ export default function Navbar() {
 
             <button
               onClick={() => setLang(lang === "EN" ? "PT" : "EN")}
-              className="flex items-center gap-2 px-4 h-10 rounded-full
+              className="font-space flex items-center gap-2 px-4 h-10 rounded-full
               backdrop-blur-2xl
               bg-white/6 border border-white/8
               text-sm text-white/70 hover:text-white

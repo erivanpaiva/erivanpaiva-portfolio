@@ -1,10 +1,14 @@
 "use client";
-
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { DM_Sans, Sora } from "next/font/google";
-import { FaGithub, FaLinkedin, FaBehance, FaMedium } from "react-icons/fa";
-import { FiCopy, FiArrowRight } from "react-icons/fi";
+import { DM_Sans } from "next/font/google";
+import { FaBehance, FaGithub, FaLinkedin, FaMedium } from "react-icons/fa";
+import { FiArrowRight, FiCopy } from "react-icons/fi";
+
+const email = "erivannpaiva@gmail.com";
+
+const roles = ["Engineer", "Developer", "Designer", "Creative"];
+const socialIcons = [FaLinkedin, FaGithub, FaBehance, FaMedium];
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -13,95 +17,92 @@ const dmSans = DM_Sans({
   display: "swap",
 });
 
-const sora = Sora({
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
-  style: ["normal"],
-});
+const container = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const fadeUpBlur = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+    filter: "blur(10px)",
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.6,
+    },
+  },
+};
+
+const introClassName = `${dmSans.className} mt-6 text-[15.5px] leading-[1.70] tracking-[-0.02em] text-[#e5e5e5] sm:text-[22px] md:text-[28px] lg:text-[42px]`;
+
+const nameClassName = `${dmSans.className} flex items-center flex-wrap gap-1 text-[43px] font-semibold leading-[0] tracking-[-0.04em] text-[#6de881] sm:gap-2 sm:text-[60px] md:gap-3 md:text-[76px] lg:text-[115px]`;
+
+const summaryClassName = `${dmSans.className} mt-5 max-w-[260px] text-[15.5px] leading-[1.25] tracking-[-0.02em] text-[#e5e5e5] sm:max-w-[380px] sm:text-[22px] md:max-w-[480px] md:text-[28px] lg:max-w-[700px] lg:text-[42px]`;
+
+const socialButtonClassName =
+  "flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] transition-all duration-300 hover:-translate-y-[2px] hover:bg-white/[0.08] hover:shadow-[0_0_20px_rgba(255,255,255,0.15)] sm:h-10 sm:w-10";
 
 export default function Hero() {
-  const container = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.12,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const fadeUpBlur = {
-    hidden: {
-      opacity: 0,
-      y: 20,
-      filter: "blur(10px)",
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      filter: "blur(0px)",
-      transition: {
-        duration: 0.6,
-      },
-    },
-  };
-
-  const roles = ["Engineer", "Developer", "Designer", "Creative"];
   const [currentRole, setCurrentRole] = useState(0);
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
-    await navigator.clipboard.writeText("erivannpaiva@gmail.com");
+    await navigator.clipboard.writeText(email);
     setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+
+    window.setTimeout(() => {
+      setCopied(false);
+    }, 2000);
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const interval = window.setInterval(() => {
       setCurrentRole((prev) => (prev + 1) % roles.length);
     }, 2000);
-    return () => clearInterval(interval);
+
+    return () => window.clearInterval(interval);
   }, []);
 
   return (
     <section id="home" className="min-h-screen">
-      <div className="max-w-[1200px] mx-auto px-6 min-h-screen flex flex-col justify-end pb-12 md:pb-14">
+      <div className="mx-auto flex min-h-screen max-w-[1300px] flex-col justify-end px-6 pb-12 md:pb-14">
         <motion.div
           variants={container}
           initial="hidden"
           animate="visible"
           className="flex flex-col items-start text-left"
         >
-          <motion.h1
-            variants={fadeUpBlur}
-            className={`${dmSans.className} text-[15.5px] sm:text-[22px] md:text-[28px] lg:text-[42px] leading-[1.70] tracking-[-0.02em] text-[#e5e5e5] mt-6 `}
-          >
-            Hey, I’m
+          <motion.h1 variants={fadeUpBlur} className={introClassName}>
+            Hey, I'm
           </motion.h1>
 
-          <motion.h1
-            variants={fadeUpBlur}
-            className={` ${dmSans.className} text-[43px] sm:text-[60px] md:text-[76px] lg:text-[115px] font-semibold text-[#6de881] leading-[0] tracking-[-0.04em] flex items-center flex-wrap gap-1 sm:gap-2 md:gap-3 `}
-          >
+          <motion.h1 variants={fadeUpBlur} className={nameClassName}>
             Erivan Paiva
-            <span className="text-[33px] sm:text-[50px] md:text-[66px] lg:text-[95px] xl:text-[95px] shrink-0 leading-none">
+            <span className="shrink-0 text-[33px] leading-none sm:text-[50px] md:text-[66px] lg:text-[95px] xl:text-[95px]">
               👨🏻‍💻
             </span>
           </motion.h1>
 
           <motion.p
             variants={fadeUpBlur}
-            className="text-xs sm:text-sm md:text-base text-neutral-400 mt-4"
+            className="mt-4 text-xs text-neutral-400 sm:text-sm md:text-base"
           >
             Software Developer ✱ Fortaleza, Brazil
           </motion.p>
 
-          <motion.p
-            variants={fadeUpBlur}
-            className={` ${dmSans.className} text-[15.5px] sm:text-[22px] md:text-[28px] lg:text-[42px] leading-[1.25] tracking-[-0.02em] text-[#e5e5e5] max-w-[260px] sm:max-w-[380px] md:max-w-[480px] lg:max-w-[700px] mt-5 `}
-          >
+          <motion.p variants={fadeUpBlur} className={summaryClassName}>
             I create modern and engaging digital experiences as a{" "}
-            <span className="inline-flex justify-center items-center w-[58px] sm:w-[88px] md:w-[112px] lg:w-[172px] mx-1">
+            <span className="mx-1 inline-flex w-[58px] items-center justify-center sm:w-[88px] md:w-[112px] lg:w-[172px]">
               <AnimatePresence mode="wait">
                 <motion.span
                   key={roles[currentRole]}
@@ -109,7 +110,7 @@ export default function Hero() {
                   animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                   exit={{ opacity: 0, y: -5, filter: "blur(8px)" }}
                   transition={{ duration: 0.4 }}
-                  className="text-[#6de881] whitespace-nowrap"
+                  className="whitespace-nowrap text-[#6de881]"
                 >
                   {roles[currentRole]}
                 </motion.span>
@@ -120,9 +121,9 @@ export default function Hero() {
 
           <motion.div
             variants={fadeUpBlur}
-            className="flex items-center gap-2 sm:gap-3 mt-6 sm:mt-8"
+            className="mt-6 flex items-center gap-2 sm:mt-8 sm:gap-3"
           >
-            <button className=" group flex items-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3 rounded-full bg-white text-black text-xs sm:text-sm font-medium whitespace-nowrap hover:scale-[1.04] active:scale-[0.97] hover:shadow-[0_0_25px_rgba(255,255,255,0.25)] transition-all duration-300 ">
+            <button className="group flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-xs font-medium whitespace-nowrap text-black transition-all duration-300 hover:scale-[1.04] hover:shadow-[0_0_25px_rgba(255,255,255,0.25)] active:scale-[0.97] sm:px-6 sm:py-3 sm:text-sm">
               Let's Connect
               <FiArrowRight
                 size={16}
@@ -132,23 +133,25 @@ export default function Hero() {
 
             <button
               onClick={handleCopy}
-              className={` flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-full text-xs sm:text-sm text-white/60 hover:text-white transition-all duration-300 flex-1 min-w-0 ${copied ? "text-white" : ""} `}
+              className={`flex min-w-0 flex-1 items-center gap-2 rounded-full px-3 py-2 text-xs text-white/60 transition-all duration-300 hover:text-white sm:px-4 sm:py-2.5 sm:text-sm ${
+                copied ? "text-white" : ""
+              }`}
             >
               <FiCopy size={14} />
-              <span className="truncate block max-w-[120px] sm:max-w-[180px] md:max-w-[240px]">
-                {copied ? "Copied!" : "erivannpaiva@gmail.com"}
+              <span className="block max-w-[120px] truncate sm:max-w-[180px] md:max-w-[240px]">
+                {copied ? "Copied!" : email}
               </span>
             </button>
           </motion.div>
 
-          <motion.div className="flex gap-4 mt-8">
-            {[FaLinkedin, FaGithub, FaBehance, FaMedium].map((Icon, i) => (
+          <motion.div variants={fadeUpBlur} className="mt-8 flex gap-4">
+            {socialIcons.map((Icon, index) => (
               <motion.a
-                key={i}
+                key={index}
                 href=""
                 target="_blank"
                 variants={fadeUpBlur}
-                className=" w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-xl bg-white/[0.04] border border-white/10 hover:bg-white/[0.08] hover:-translate-y-[2px] hover:shadow-[0_0_20px_rgba(255,255,255,0.15)] transition-all duration-300 "
+                className={socialButtonClassName}
               >
                 <Icon size={16} className="text-white/70" />
               </motion.a>
