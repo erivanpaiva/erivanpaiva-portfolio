@@ -52,7 +52,7 @@ const metaClassName = `${dmSans.className} mt-5 mb-3 text-xs text-white/70 text-
 
 const summaryClassName = `${dmSans.className} text-[17px] sm:text-[22px] md:text-[27px] lg:text-[32px] max-w-[280px] sm:max-w-[380px] md:max-w-[470px] lg:max-w-[530px] leading-[1.25] tracking-[-0.02em] text-[#faffee]`;
 
-const primaryButtonClassName = ` ${dmSans.className} group flex items-center gap-2 rounded-full bg-[var(--acent)] px-4 py-2.5 text-[12px] sm:text-[12.5px] md:text-[13px] lg:text-[16px] font-medium whitespace-nowrap text-black transition-all duration-300 hover:scale-[1.04] hover:shadow-[0_0_25px_color-mix(in_srgb,var(--acent)_40%,transparent)] active:scale-[0.97] sm:px-6 sm:py-3 `;
+const primaryButtonClassName = ` ${dmSans.className} group flex items-center gap-2 rounded-full bg-[var(--accent)] px-4 py-2.5 text-[12px] sm:text-[12.5px] md:text-[13px] lg:text-[16px] font-medium whitespace-nowrap text-black transition-all duration-300 hover:scale-[1.04] hover:shadow-[0_0_25px_color-mix(in_srgb,var(--accent)_40%,transparent)] active:scale-[0.97] sm:px-6 sm:py-3 `;
 
 const secondaryButtonClassName = ` ${dmSans.className} flex min-w-0 flex-1 items-center gap-2 rounded-full px-3 py-2 text-[12px] sm:text-[12.5px] md:text-[13px] lg:text-[16px] text-white/70 transition-all duration-300 hover:text-white sm:px-4 sm:py-2.5 `;
 
@@ -129,7 +129,7 @@ export default function Hero() {
                   animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                   exit={{ opacity: 0, y: -5, filter: "blur(8px)" }}
                   transition={{ duration: 0.4 }}
-                  className="whitespace-nowrap text-[var(--acent)]"
+                  className="whitespace-nowrap text-[var(--accent)]"
                 >
                   {roles[currentRole]}
                 </motion.span>

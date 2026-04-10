@@ -3,7 +3,7 @@
 :root {
   --background: #080a05;
   --foreground: #ededed;
-  --acent: #c0e86a;
+  --accent: #c0e86a;
 }
 
 @media (prefers-color-scheme: dark) {
