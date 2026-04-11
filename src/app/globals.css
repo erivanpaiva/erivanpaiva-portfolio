@@ -15,7 +15,7 @@
 
 html {
   scrollbar-width: thin;
-  scrollbar-color: #c0e86a #080a05;
+  scrollbar-color: #474747 #080a05;
 }
 
 body,
@@ -23,11 +23,15 @@ button,
 input,
 textarea,
 select {
-  font-family: var(--font-dm-sans), sans-serif;
+  font-family: var(--font-plus-jakarta-sans), sans-serif;
 }
 
 .font-dm {
   font-family: var(--font-dm-sans), sans-serif;
+}
+
+.font-plus-jakarta {
+  font-family: var(--font-plus-jakarta-sans), sans-serif;
 }
 
 .font-space {

@@ -10,13 +10,6 @@ import {
   HiPaintBrush,
 } from "react-icons/hi2";
 
-const plusJakartaSans = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  style: ["normal", "italic"],
-  display: "swap",
-});
-
 const container: Variants = {
   hidden: {},
   visible: {
@@ -56,7 +49,7 @@ export default function About() {
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="text-[var(--accent)] text-xs tracking-[0.3em] uppercase font-medium"
+                className="font-space text-[var(--accent)] text-xs tracking-[0.3em] uppercase font-medium"
               >
                 ✱ About Me
               </motion.span>
@@ -76,9 +69,7 @@ export default function About() {
                 variants={item}
                 className="relative overflow-hidden rounded-[28px] bg-[#080a05] border border-white/[0.06] p-16 lg:col-span-8 flex flex-col justify-center gap-6"
               >
-                <div
-                  className={`${plusJakartaSans.className} font-regular space-y-3 text-[17px] leading-[1.9] text-white/90`}
-                >
+                <div className="font-plus-jakarta font-regular space-y-3 text-[17px] leading-[1.9] text-white/90">
                   <p>
                     <span className="text-[var(--accent)] font-semibold">
                       Software Developer
@@ -119,21 +110,15 @@ export default function About() {
                 </div>
 
                 <div className="relative z-10">
-                  <p
-                    className={`${plusJakartaSans.className} text-white/30 text-[10px] uppercase mt-1 tracking-[0.2em]`}
-                  >
+                  <p className="font-plus-jakarta text-white/30 text-[10px] uppercase mt-1 tracking-[0.2em]">
                     Based in
                   </p>
-                  <h3
-                    className={`${plusJakartaSans.className} text-white text-3xl font-semibold mt-1 leading-tight`}
-                  >
+                  <h3 className="font-plus-jakarta text-white text-3xl font-semibold mt-1 leading-tight">
                     Fortaleza, BR
                   </h3>
                 </div>
 
-                <p
-                  className={`${plusJakartaSans.className} relative z-10 text-white/30 text-[10px] uppercase mt-1 tracking-[0.2em]`}
-                >
+                <p className="font-plus-jakarta relative z-10 text-white/30 text-[10px] uppercase mt-1 tracking-[0.2em]">
                   Available globally
                 </p>
               </motion.div>
@@ -147,27 +132,19 @@ export default function About() {
                 </div>
                 <div className="flex-1 flex items-center">
                   <div className="flex items-end gap-1 leading-none">
-                    <span
-                      className={`${plusJakartaSans.className} text-[72px] font-bold text-[var(--accent)] leading-none tracking-tighter`}
-                    >
+                    <span className="font-plus-jakarta text-[72px] font-bold text-[var(--accent)] leading-none tracking-tighter">
                       4
                     </span>
-                    <span
-                      className={`${plusJakartaSans.className} text-[40px] font-bold text-[var(--accent)] leading-none mb-2`}
-                    >
+                    <span className="font-plus-jakarta text-[40px] font-bold text-[var(--accent)] leading-none mb-2">
                       +
                     </span>
                   </div>
                 </div>
                 <div className="space-y-1">
-                  <p
-                    className={`${plusJakartaSans.className} text-white text-[15px] font-semibold`}
-                  >
+                  <p className="font-plus-jakarta text-white text-[15px] font-semibold">
                     Years Experience
                   </p>
-                  <p
-                    className={`${plusJakartaSans.className} text-white/40 text-sm`}
-                  >
+                  <p className="font-plus-jakarta text-white/40 text-sm">
                     Building modern applications
                   </p>
                 </div>
@@ -191,19 +168,19 @@ export default function About() {
                     <p className="pl-4">
                       <span className="text-white/50">focus</span>
                       <span className="text-white/40">:</span>{" "}
-                      <span className="text-[#d4f57a]">'Front-end'</span>
+                      <span className="text-[var(--accent)]">'Front-end'</span>
                       <span className="text-white/40">,</span>
                     </p>
                     <p className="pl-4">
                       <span className="text-white/50">passion</span>
                       <span className="text-white/40">:</span>{" "}
-                      <span className="text-[#d4f57a]">'UX/UI'</span>
+                      <span className="text-[var(--accent)]">'UX/UI'</span>
                       <span className="text-white/40">,</span>
                     </p>
                     <p className="pl-4">
                       <span className="text-white/50">goal</span>
                       <span className="text-white/40">:</span>{" "}
-                      <span className="text-[#d4f57a]">
+                      <span className="text-[var(--accent)]">
                         'great professional'
                       </span>
                     </p>
@@ -213,14 +190,10 @@ export default function About() {
                   </div>
                 </div>
                 <div className="space-y-1">
-                  <p
-                    className={`${plusJakartaSans.className} text-white text-[15px] font-semibold`}
-                  >
-                    Frontend & UX/UI Focus
+                  <p className="font-plus-jakarta text-white text-[15px] font-semibold">
+                    Front-end & UX/UI Focus
                   </p>
-                  <p
-                    className={`${plusJakartaSans.className} text-white/40 text-sm`}
-                  >
+                  <p className="font-plus-jakarta text-white/40 text-sm">
                     User centered interfaces
                   </p>
                 </div>
@@ -244,7 +217,7 @@ export default function About() {
                     ].map((item) => (
                       <span
                         key={item}
-                        className={`${plusJakartaSans.className} text-[11px] text-[var(--accent)] border border-[var(--accent)]/20 bg-[var(--accent)]/5 rounded-full px-3 py-1`}
+                        className="font-plus-jakarta text-[11px] text-[var(--accent)] border border-[var(--accent)]/20 bg-[var(--accent)]/5 rounded-full px-3 py-1"
                       >
                         {item}
                       </span>
@@ -252,14 +225,10 @@ export default function About() {
                   </div>
                 </div>
 
-                <p
-                  className={`${plusJakartaSans.className} text-white text-[15px] font-semibold`}
-                >
+                <p className="font-plus-jakarta text-white text-[15px] font-semibold">
                   Design Background
                 </p>
-                <p
-                  className={`${plusJakartaSans.className} text-white/40 text-sm`}
-                >
+                <p className="font-plus-jakarta text-white/40 text-sm">
                   Professional experience
                 </p>
               </motion.div>
@@ -281,7 +250,7 @@ export default function About() {
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="text-[var(--accent)] text-xs tracking-[0.3em] uppercase font-medium"
+                className="font-space text-[var(--accent)] text-xs tracking-[0.3em] uppercase font-medium"
               >
                 ✱ Skills
               </motion.span>
@@ -307,7 +276,7 @@ export default function About() {
             <motion.div
               variants={item}
               key={skill.name}
-              className={`${plusJakartaSans.className} col-span-12 sm:col-span-6 lg:col-span-4 group relative flex items-center gap-4 rounded-[20px] bg-[#080a05] border border-white/[0.06] p-4 px-5 transition-all duration-300 hover:-translate-y-[2px]`}
+              className="font-plus-jakarta col-span-12 sm:col-span-6 lg:col-span-4 group relative flex items-center gap-4 rounded-[20px] bg-[#080a05] border border-white/[0.06] p-4 px-5 transition-all duration-300 hover:-translate-y-[2px]"
             >
               <div
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 rounded-[inherit] blur-xl"
@@ -316,11 +285,11 @@ export default function About() {
                 }}
               />
 
-              <div className="relative z-10 w-10 h-10 flex items-center justify-center rounded-lg bg-white/[0.05]">
+              <div className="relative z-10 w-13 h-13 flex items-center justify-center rounded-lg bg-white/[0.05]">
                 <img
                   src={skill.icon}
                   alt={skill.name}
-                  className="w-6 h-6 object-contain transition duration-300 group-hover:scale-110"
+                  className="w-9 h-9 object-contain transition duration-300 group-hover:scale-110"
                 />
               </div>
 

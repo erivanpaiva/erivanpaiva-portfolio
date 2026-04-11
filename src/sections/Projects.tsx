@@ -34,19 +34,19 @@ const projects = [
     title: "Project 1",
     desc: "Description",
     tech: ["Figma", "React Native", "TypeScript"],
-    image: "/foto.jpg",
+    image: "/project1.png",
   },
   {
     title: "Project 2",
     desc: "Description",
-    tech: ["Next.js", "Figma", "React"],
-    image: "/foto.jpg",
+    tech: ["Figma", "Next.js", "React"],
+    image: "/project2.webp",
   },
   {
     title: "Project 3",
     desc: "Description",
-    tech: ["HTML", "CSS", "JavaScript"],
-    image: "/foto.jpg",
+    tech: ["C#", "JavaScript", "HTML", "CSS"],
+    image: "/project3.jpg",
   },
 ];
 
@@ -77,7 +77,7 @@ export default function Projects() {
   return (
     <>
       <section id="projects" className="pt-10 sm:pt-14 md:pt-16">
-        <div className="w-full max-w-[1300px] mx-auto px-6 flex flex-col gap-10">
+        <div className="w-full max-w-[1300px] mx-auto px-6">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -89,7 +89,7 @@ export default function Projects() {
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="text-[#6de881] text-xs tracking-[0.3em] uppercase font-medium"
+                className="font-space text-[var(--accent)] text-xs tracking-[0.3em] uppercase font-medium"
               >
                 ✱ Featured Projects
               </motion.span>
@@ -128,10 +128,10 @@ export default function Projects() {
                     <div className="translate-y-0 opacity-100 transition duration-500 md:translate-y-6 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
                       <div className="flex items-end justify-between gap-3 sm:gap-4">
                         <div className="max-w-[72%] sm:max-w-[78%]">
-                          <h3 className="font-dm text-lg font-medium text-white sm:text-xl md:text-2xl">
+                          <h3 className="font-plus-jakarta text-lg font-medium text-white sm:text-xl md:text-2xl">
                             {projects[0].title}
                           </h3>
-                          <p className="font-dm mt-2 text-[13px] leading-relaxed text-white/75 sm:text-sm md:text-[15px]">
+                          <p className="font-plus-jakarta mt-2 text-[13px] leading-relaxed text-white/75 sm:text-sm md:text-[15px]">
                             {projects[0].desc}
                           </p>
                           <div className="mt-3 flex flex-wrap gap-1.5 sm:mt-4 sm:gap-2">
@@ -141,7 +141,7 @@ export default function Projects() {
                               return (
                                 <span
                                   key={tech}
-                                  className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/8 px-2.5 py-1 text-[9px] uppercase tracking-[0.15em] text-white/78 backdrop-blur-2xl sm:gap-2 sm:px-3 sm:py-1.5 sm:text-[10px]"
+                                  className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/8 px-2 py-1 text-[8px] uppercase tracking-[0.15em] text-white/78 backdrop-blur-2xl sm:gap-2 sm:px-2.5 sm:py-1 sm:text-[9px]"
                                 >
                                   {skill && (
                                     <Image
@@ -198,10 +198,10 @@ export default function Projects() {
                       <div className="translate-y-0 opacity-100 transition duration-500 md:translate-y-6 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
                         <div className="flex items-end justify-between gap-3 sm:gap-4">
                           <div className="max-w-[72%] sm:max-w-[76%]">
-                            <h3 className="font-dm text-base font-medium text-white sm:text-lg">
+                            <h3 className="font-plus-jakarta text-base font-medium text-white sm:text-lg">
                               {project.title}
                             </h3>
-                            <p className="font-dm mt-2 text-[12px] leading-relaxed text-white/75 sm:text-xs">
+                            <p className="font-plus-jakarta mt-2 text-[12px] leading-relaxed text-white/75 sm:text-xs">
                               {project.desc}
                             </p>
                             <div className="mt-3 flex flex-wrap gap-1.5 sm:mt-4 sm:gap-2">
@@ -211,7 +211,7 @@ export default function Projects() {
                                 return (
                                   <span
                                     key={tech}
-                                    className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/8 px-2.5 py-1 text-[9px] uppercase tracking-[0.15em] text-white/78 backdrop-blur-2xl"
+                                    className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/8 px-2 py-1 text-[8px] uppercase tracking-[0.15em] text-white/78 backdrop-blur-2xl"
                                   >
                                     {skill && (
                                       <Image
@@ -262,53 +262,67 @@ export default function Projects() {
       </section>
 
       <section id="testimonials" className="pt-8 sm:pt-12 md:pt-16">
-        <div className="w-full max-w-[1300px] mx-auto px-6 flex flex-col gap-10">
-          <div className="flex flex-col gap-12">
-            <div className="flex items-center gap-4">
-              <span className="text-[#6de881] text-xs tracking-[0.3em] uppercase font-medium">
+        <div className="w-full max-w-[1300px] mx-auto px-6">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.3 }}
+            className="flex flex-col gap-12"
+          >
+            <motion.div className="flex items-center gap-4">
+              <motion.span
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="font-space text-[var(--accent)] text-xs tracking-[0.3em] uppercase font-medium"
+              >
                 ✱ What People Say
-              </span>
-              <div className="flex-1 h-[1px] bg-white/10" />
-            </div>
+              </motion.span>
 
-            <motion.div
-              variants={container}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: false, amount: 0.3 }}
-              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 max-w-[1120px] mx-auto w-full gap-6 mt-6 md:mt-8 mb-6 md:mb-8"
-            >
-              {testimonials.map((t, i) => (
-                <motion.div key={i} variants={item} className="pt-12">
-                  <div className="relative min-h-[250px] rounded-[26px] bg-[#18201C] p-7 flex flex-col items-center text-center gap-5 transition-all duration-300 hover:-translate-y-1 hover:bg-[#1E2A22] sm:min-h-[270px] sm:p-8">
-                    <div className="absolute -top-7 left-1/2 -translate-x-1/2">
-                      <div className="h-14 w-14 rounded-full overflow-hidden ring-4 ring-[#121713] sm:h-16 sm:w-16">
-                        <Image
-                          src={t.image}
-                          alt={t.name}
-                          width={64}
-                          height={64}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    </div>
-
-                    <p className="mt-5 text-white/72 text-[15px] leading-[1.85] sm:text-base">
-                      {t.text}
-                    </p>
-
-                    <div className="mt-auto pt-2">
-                      <p className="text-white text-[15px] font-medium">
-                        {t.name}
-                      </p>
-                      <p className="text-white/50 text-[12px] mt-1">{t.role}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
+              <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                transition={{ duration: 0.6 }}
+                className="flex-1 h-[1px] bg-white/10 origin-left"
+              />
             </motion.div>
-          </div>
+          </motion.div>
         </div>
+
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.3 }}
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 max-w-[1120px] mx-auto w-full gap-6 mt-6 md:mt-8 mb-6 md:mb-8"
+        >
+          {testimonials.map((t, i) => (
+            <motion.div key={i} variants={item} className="pt-12">
+              <div className="relative min-h-[250px] rounded-[26px] bg-[#18201C] p-7 flex flex-col items-center text-center gap-5 transition-all duration-300 hover:-translate-y-1 hover:bg-[#1E2A22] sm:min-h-[270px] sm:p-8">
+                <div className="absolute -top-7 left-1/2 -translate-x-1/2">
+                  <div className="h-14 w-14 rounded-full overflow-hidden ring-4 ring-[#121713] sm:h-16 sm:w-16">
+                    <Image
+                      src={t.image}
+                      alt={t.name}
+                      width={64}
+                      height={64}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+
+                <p className="mt-5 text-white/72 text-[15px] leading-[1.85] sm:text-base">
+                  {t.text}
+                </p>
+
+                <div className="mt-auto pt-2">
+                  <p className="text-white text-[15px] font-medium">{t.name}</p>
+                  <p className="text-white/50 text-[12px] mt-1">{t.role}</p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </section>
     </>
   );

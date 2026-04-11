@@ -1,11 +1,24 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { DM_Sans, Space_Grotesk, Zain } from "next/font/google";
+import {
+  DM_Sans,
+  Plus_Jakarta_Sans,
+  Space_Grotesk,
+  Zain,
+} from "next/font/google";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta-sans",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
   style: ["normal", "italic"],
   display: "swap",
 });
@@ -37,11 +50,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${dmSans.variable} ${spaceGrotesk.variable} ${zain.variable} h-full antialiased`}
+      className={`${dmSans.variable} ${plusJakartaSans.variable} ${spaceGrotesk.variable} ${zain.variable} h-full antialiased`}
     >
-      <body className={`${spaceGrotesk.className} min-h-full flex flex-col`}>
-        {children}
-      </body>
+      <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
 }
